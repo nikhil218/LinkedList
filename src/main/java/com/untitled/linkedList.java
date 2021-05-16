@@ -1,6 +1,6 @@
 package com.untitled;
 
-public class linkedList{
+public class linkedList<K>{
 
    public INode head;
    public INode tail;
@@ -67,6 +67,33 @@ public class linkedList{
        }
    }
 
+    public void findNode(K value){
+
+       int i=1;
+       boolean flag=false;
+
+        if (head == null){
+            System.out.println("List is empty");
+        }else {
+            INode tempNode = head;
+            while (tempNode != null){
+                if (tempNode.getKey() == value){
+                    flag=true;
+                    break;
+                }else {
+                    i++;
+                    tempNode = tempNode.getNext();
+                }
+            }
+            if (flag){
+                System.out.println(value+" is present at the : "+ i +" location in list");
+            }else {
+                System.out.println("value absent");
+            }
+
+        }
+    }
+
     public void printNodes(){
 
         if (head == null){
@@ -89,10 +116,8 @@ public class linkedList{
         myLinkedList.add(myFirstNode);
         myLinkedList.add(mySecondNode);
         myLinkedList.add(myThirdNode);
-        System.out.println("before poplast");
         myLinkedList.printNodes();
-        System.out.println("after poplast");
-        myLinkedList.popLast();
-        myLinkedList.printNodes();
+        myLinkedList.findNode(30);
+        //myLinkedList.printNodes();
    }
 }
