@@ -10,12 +10,10 @@ public class linkedList{
        this.tail = null;
    }
 
-   public void add(INode newNode){
-       if(this.tail==null){
-           this.tail=newNode;
-       }
+   public void append(INode newNode){
        if(this.head==null){
            this.head=newNode;
+           this.tail=newNode;
        }else {
            INode tempNode = this.head;
            this.head = newNode;
@@ -23,7 +21,7 @@ public class linkedList{
        }
    }
 
-    public void append(INode newNode){
+    public void add(INode newNode){
         if(this.head==null){
             this.head=newNode;
             this.tail=newNode;
@@ -52,20 +50,24 @@ public class linkedList{
        }
    }
 
+   public void pop(){
+       INode tempNode = head.getNext();
+       this.head = tempNode;
+   }
+
     public static void main(String[] args) {
 
         linkedList myLinkedList = new linkedList();
-        MyNode<Integer> myFirstNode = new MyNode<>(70);
-        MyNode<Integer> mySecondNode = new MyNode<>(56);
-        MyNode<Integer> myThirdNode = new MyNode<>(30);
+        MyNode<Integer> myFirstNode = new MyNode<>(56);
+        MyNode<Integer> mySecondNode = new MyNode<>(30);
+        MyNode<Integer> myThirdNode = new MyNode<>(70);
         myLinkedList.add(myFirstNode);
         myLinkedList.add(mySecondNode);
-        System.out.println("beforfe insert");
+        myLinkedList.add(myThirdNode);
+        System.out.println("before pop");
         myLinkedList.printNodes();
-        myLinkedList.insert(mySecondNode, myThirdNode);
-        System.out.println("after insert");
+        System.out.println("after pop");
+        myLinkedList.pop();
         myLinkedList.printNodes();
-        //myLinkedList.append(myThirdNode);
-        //myLinkedList.printNodes();
     }
 }
