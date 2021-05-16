@@ -37,23 +37,48 @@ public class linkedList{
        newNode.setNext(tempNode);
     }
 
-   public void printNodes(){
-
-       if (head == null){
-           System.out.println("List is empty");
-       }else {
-           INode tempNode = head;
-           while (tempNode != null){
-               System.out.println(tempNode.getKey());
-               tempNode = tempNode.getNext();
-           }
+   public void pop(){
+       if(head == null){
+           System.out.println("list is empty");
+       }
+       else if(head == tail){
+           head = tail = null;
+       }
+       else {
+           INode tempNode = head.getNext();
+           this.head = tempNode;
        }
    }
 
-   public void pop(){
-       INode tempNode = head.getNext();
-       this.head = tempNode;
+   public void popLast() {
+       if(head == null){
+           System.out.println("list is empty");
+       }
+       else if(head == tail){
+           head = tail = null;
+       }
+       else {
+           INode tempNode = head;
+           while (tempNode.getNext() != tail){
+               tempNode = tempNode.getNext();
+           }
+           tail = tempNode;
+           tail.setNext(null);
+       }
    }
+
+    public void printNodes(){
+
+        if (head == null){
+            System.out.println("List is empty");
+        }else {
+            INode tempNode = head;
+            while (tempNode != null){
+                System.out.println(tempNode.getKey());
+                tempNode = tempNode.getNext();
+            }
+        }
+    }
 
     public static void main(String[] args) {
 
@@ -64,10 +89,10 @@ public class linkedList{
         myLinkedList.add(myFirstNode);
         myLinkedList.add(mySecondNode);
         myLinkedList.add(myThirdNode);
-        System.out.println("before pop");
+        System.out.println("before poplast");
         myLinkedList.printNodes();
-        System.out.println("after pop");
-        myLinkedList.pop();
+        System.out.println("after poplast");
+        myLinkedList.popLast();
         myLinkedList.printNodes();
-    }
+   }
 }
