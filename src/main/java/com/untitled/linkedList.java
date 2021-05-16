@@ -33,6 +33,12 @@ public class linkedList{
         }
     }
 
+    public void insert(INode myNode, INode newNode){
+       INode tempNode = myNode.getNext();
+       myNode.setNext(newNode);
+       newNode.setNext(tempNode);
+    }
+
    public void printNodes(){
 
        if (head == null){
@@ -49,12 +55,17 @@ public class linkedList{
     public static void main(String[] args) {
 
         linkedList myLinkedList = new linkedList();
-        MyNode<Integer> myFirstNode = new MyNode<>(56);
-        MyNode<Integer> mySecondNode = new MyNode<>(30);
-        MyNode<Integer> myThirdNode = new MyNode<>(70);
-        myLinkedList.append(myFirstNode);
-        myLinkedList.append(mySecondNode);
-        myLinkedList.append(myThirdNode);
+        MyNode<Integer> myFirstNode = new MyNode<>(70);
+        MyNode<Integer> mySecondNode = new MyNode<>(56);
+        MyNode<Integer> myThirdNode = new MyNode<>(30);
+        myLinkedList.add(myFirstNode);
+        myLinkedList.add(mySecondNode);
+        System.out.println("beforfe insert");
         myLinkedList.printNodes();
+        myLinkedList.insert(mySecondNode, myThirdNode);
+        System.out.println("after insert");
+        myLinkedList.printNodes();
+        //myLinkedList.append(myThirdNode);
+        //myLinkedList.printNodes();
     }
 }
