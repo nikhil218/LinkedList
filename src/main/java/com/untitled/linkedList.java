@@ -23,6 +23,16 @@ public class linkedList{
        }
    }
 
+    public void append(INode newNode){
+        if(this.head==null){
+            this.head=newNode;
+            this.tail=newNode;
+        }else {
+            tail.setNext(newNode);
+            tail = newNode;
+        }
+    }
+
    public void printNodes(){
 
        if (head == null){
@@ -42,9 +52,9 @@ public class linkedList{
         MyNode<Integer> myFirstNode = new MyNode<>(56);
         MyNode<Integer> mySecondNode = new MyNode<>(30);
         MyNode<Integer> myThirdNode = new MyNode<>(70);
-        myLinkedList.add(myFirstNode);
-        myLinkedList.add(mySecondNode);
-        myLinkedList.add(myThirdNode);
+        myLinkedList.append(myFirstNode);
+        myLinkedList.append(mySecondNode);
+        myLinkedList.append(myThirdNode);
         myLinkedList.printNodes();
     }
 }
