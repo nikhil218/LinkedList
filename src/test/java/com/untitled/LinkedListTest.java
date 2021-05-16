@@ -5,17 +5,16 @@ import org.junit.Assert;
 
 public class LinkedListTest {
     @Test
-    public void checkIf3GivenNumbersFormALinkedList() {
+    public void testTocheckIfNewNodesAreAddedToTop() {
+
         MyNode<Integer> myFirstNode = new MyNode<>(56);
         MyNode<Integer> mySecondNode = new MyNode<>(30);
         MyNode<Integer> myThirdNode = new MyNode<>(70);
-
-        myFirstNode.setNext(mySecondNode);
-        mySecondNode.setNext(myThirdNode);
-
-        boolean result = myFirstNode.getNext().equals(mySecondNode) &&
-                        mySecondNode.getNext().equals(myThirdNode);
-
+        linkedList myLinkedList = new linkedList();
+        myLinkedList.add(myFirstNode);
+        myLinkedList.add(mySecondNode);
+        myLinkedList.add(myThirdNode);
+        boolean result = myLinkedList.head.equals(myThirdNode) && myLinkedList.tail.equals(myFirstNode);
         Assert.assertTrue(result);
 
     }
