@@ -69,8 +69,8 @@ public class linkedList<K>{
 
     public void findNode(K value){
 
-       int i=1;
-       boolean flag=false;
+        int i=1;
+        boolean flag=false;
 
         if (head == null){
             System.out.println("List is empty");
@@ -90,7 +90,25 @@ public class linkedList<K>{
             }else {
                 System.out.println("value absent");
             }
+        }
+    }
 
+    public void findNodeThenInsert(K valueToFind, K valueToInsert){
+
+        if (head == null){
+            System.out.println("List is empty");
+        }else {
+            INode tempNode = head;
+            while (tempNode != null){
+                if (tempNode.getKey() == valueToFind){
+                    MyNode<K> newNode = new MyNode<>(valueToInsert);
+                    newNode.setNext(tempNode.getNext());
+                    tempNode.setNext(newNode);
+                    break;
+                }else {
+                    tempNode = tempNode.getNext();
+                }
+            }
         }
     }
 
@@ -116,8 +134,10 @@ public class linkedList<K>{
         myLinkedList.add(myFirstNode);
         myLinkedList.add(mySecondNode);
         myLinkedList.add(myThirdNode);
+        System.out.println("node before");
         myLinkedList.printNodes();
-        myLinkedList.findNode(30);
-        //myLinkedList.printNodes();
+        System.out.println("nodes after");
+        myLinkedList.findNodeThenInsert(30, 40);
+        myLinkedList.printNodes();
    }
 }
