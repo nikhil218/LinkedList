@@ -112,6 +112,27 @@ public class linkedList<K>{
         }
     }
 
+    public void findNodeThenDelete(K valueToFind){
+
+       INode tempNode=head, prevNode=null;
+
+       if (tempNode != null && tempNode.getKey() == valueToFind){
+           head = tempNode.getNext();
+           return;
+       }
+
+       while (tempNode != null && tempNode.getKey() != valueToFind){
+           prevNode = tempNode;
+           tempNode = tempNode.getNext();
+       }
+
+       if(tempNode==null){
+           return;
+       }
+
+       prevNode.setNext(tempNode.getNext());
+    }
+
     public void printNodes(){
 
         if (head == null){
@@ -130,14 +151,16 @@ public class linkedList<K>{
         linkedList myLinkedList = new linkedList();
         MyNode<Integer> myFirstNode = new MyNode<>(56);
         MyNode<Integer> mySecondNode = new MyNode<>(30);
-        MyNode<Integer> myThirdNode = new MyNode<>(70);
+        MyNode<Integer> myThirdNode = new MyNode<>(40);
+        MyNode<Integer> myFourthNode = new MyNode<>(70);
         myLinkedList.add(myFirstNode);
         myLinkedList.add(mySecondNode);
         myLinkedList.add(myThirdNode);
-        System.out.println("node before");
+        myLinkedList.add(myFourthNode);
+        System.out.println("nodes before");
         myLinkedList.printNodes();
         System.out.println("nodes after");
-        myLinkedList.findNodeThenInsert(30, 40);
+        myLinkedList.findNodeThenDelete(56);
         myLinkedList.printNodes();
    }
 }
